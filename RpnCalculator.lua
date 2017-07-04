@@ -17,15 +17,15 @@ extension.onTextReceive = function (msg)
 	if (msg.text == "/start") then
 		if(msg.chat.type=='private') then
 			bot.sendMessage(msg.from.id, "Hi, my name is " .. bot.first_name .. "!\n\nRPN = Reverse Polish Notation. It's a t-thing! Look it up at Wikipedia\n\nI was made by @GladiadorDePlastico. Quite a guy!")
-			bot.sendMessage(msg.from.id, "My commands are:\n/start (Get this lovely welcome message)\n/print (prints the RPN stack)\n/pop (Pops the element on the top of the stack)\n/clear (clears the stack)\n/help (summons Satan)")
+			bot.sendMessage(msg.from.id, "My commands are:\n/start (Get this lovely welcome message)\n/print (Prints the RPN stack)\n/pop (Pops the element on the top of the stack)\n/clear (Clears the stack)\n/help (summons Satan)")
 			bot.sendMessage(msg.from.id,'Insert a math operation in RPN notation, for example: 2 2 +')
 		else
 			bot.sendMessage(msg.chat.id,"Please send this command at @Rpncalculatorbot")
 		end
 	elseif (msg.text == "/help") then
 		if(msg.chat.type=='private') then
-			bot.sendMessage(msg.from.id,"The available operations are '+ - * / ^'\nI could implement more operations but I'm a lazy piece of shit")
-			bot.sendMessage(msg.from.id,"Example using the RPN calculator:\n'3 5' <<Inserts the numbers 3 and 5 into the stack>>\n'2 2 + 3 *' <<This is equivalent to (2+2)*3>>")
+			bot.sendMessage(msg.from.id,"The available math operations are '+ - * / ^'\nI could implement more operations but I'm a lazy piece of shit")
+			bot.sendMessage(msg.from.id,"Example using the RPN calculator:\n\n'1 2' «inserts the numbers 1 and 2 into the stack»\n'+' «sums the last two numbers on the stack»\n'2 2 +' «adds 2 and 2 to the stack and sum them»\n'2 2 + 3 *' «this is equivalent to (2+2)*3»\n\nPS: Type the examples without the single quotes")
 			bot.sendMessage(msg.from.id,"May Satan be with you! 👺👺👺")
 		else
 			bot.sendMessage(msg.chat.id,"Please send this command at @Rpncalculatorbot")
