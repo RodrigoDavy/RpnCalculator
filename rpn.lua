@@ -40,6 +40,14 @@ function rpn(id,msg)
 
 	for i = 1,#lista do
 
+		for j=1,string.len(lista[i]) do
+                	if(string.sub(lista[i],j,j) == ',') then
+                        	local temp = string.sub(lista[i],1,j-1) .. '.' .. string.sub(lista[i],j+1)
+                                lista[i] = temp
+                	end
+		end
+
+
 		if(tonumber(lista[i])~=nil) then
 			lista[i]=tonumber(lista[i])
 		end
