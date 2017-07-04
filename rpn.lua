@@ -28,6 +28,15 @@ function popPilha(id)
 	end
 end
 
+function popNPilha(pilha,n) --to clean unused values from memory
+	if(n>0) then
+		for i=1,n do
+			pilha[pilha.n] = nil
+			pilha.n = pilha.n - 1
+		end
+	end
+end
+
 function clearPilha(id)
 	local pilha = getPilha(id)
 	pilha.n = 1
@@ -54,7 +63,6 @@ function rpn(id,msg)
 
 		pilha[pilha.n] = lista[i]
 		
-
 		if(type(pilha[pilha.n])=='string') then
 			if((pilha[pilha.n-2] and pilha[pilha.n-1]) == nil) then
 				return('Falha na operação RPN')
@@ -63,28 +71,28 @@ function rpn(id,msg)
 			if(pilha[pilha.n]=='+') then
 
 				pilha[pilha.n-2] = pilha[pilha.n-2] + pilha[pilha.n-1]
-				pilha.n = pilha.n-2
+				popNPilha(pilha,2)
 
 			elseif(pilha[pilha.n]=='-') then
 
 				pilha[pilha.n-2] = pilha[pilha.n-2] - pilha[pilha.n-1]
-				pilha.n = pilha.n-2
+				popNPilha(pilha,2)
 
 			elseif(pilha[pilha.n]=='*') then
 
 				pilha[pilha.n-2] = pilha[pilha.n-2] * pilha[pilha.n-1]
-				pilha.n = pilha.n-2
+				popNPilha(pilha,2)
 
 			elseif(pilha[pilha.n]=='/') then
 
 				pilha[pilha.n-2] = pilha[pilha.n-2] / pilha[pilha.n-1]
-				pilha.n = pilha.n-2
+				popNPilha(pilha,2)
 			elseif(pilha[pilha.n]=='^') then
 
 				pilha[pilha.n-2] = pilha[pilha.n-2] ^ pilha[pilha.n-1]
-				pilha.n = pilha.n-2
+				popNPilha(pilha,2)
 			else
-				pilha.n = pilha.n - 1
+				popNPilha(pilha,1)
 			end
 		end
 
